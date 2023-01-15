@@ -32,14 +32,14 @@ import java.util.Map;
             return "main";
         }
 
-        @PostMapping(path = "/")
+        @PostMapping(path = "add")
         public String add(@RequestParam(required = true) String text, @RequestParam(required=false) String tag, Map<String, Object> model){
             Message message = new Message(text,tag);
             messagesRepo.save(message);
             return "main";
         }
 
-        @PostMapping("filter")
+        @PostMapping(path = "filter")
         public String filter(@RequestParam(required=false) String filter, Map<String, Object> model){
             Iterable<Message> messages;
             if (filter != null && !filter.isEmpty()){
